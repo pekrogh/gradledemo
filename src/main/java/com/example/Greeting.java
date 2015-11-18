@@ -7,10 +7,16 @@ public class Greeting {
 
     private final long id;
     private final String content;
+    private static final String template = "Hello, %s!";
 
     public Greeting(long id, String content) {
         this.id = id;
-        this.content = content;
+
+        if (content.equalsIgnoreCase("krogh")) {
+            this.content = "gamle dreng";
+        } else {
+            this.content = content;
+        }
     }
 
     public long getId() {
@@ -18,6 +24,6 @@ public class Greeting {
     }
 
     public String getContent() {
-        return content;
+        return String.format(template, this.content);
     }
 }

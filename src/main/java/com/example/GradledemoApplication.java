@@ -12,13 +12,11 @@ import java.util.concurrent.atomic.AtomicLong;
 @EnableAutoConfiguration
 public class GradledemoApplication {
 
-    private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Greeting(counter.incrementAndGet(),
-                String.format(template, name));
+        return new Greeting(counter.incrementAndGet(),name);
     }
 
     public static void main(String[] args) {
